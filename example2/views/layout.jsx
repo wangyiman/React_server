@@ -12,7 +12,7 @@ class Layout extends React.Component {
                 <meta></meta>
                 <body>
                     {this.props.children}
-                    <script src="/js/main.js"></script>
+                    <script src="/bundle.js"></script>
                 </body>
             </html>
         );

@@ -8,8 +8,13 @@ var Router = require('koa-router');
 var app = new Koa();
 var router = new Router();
 
+//把views文件放到localhost:3000下面
+//把public/js文件放到localhost:3000下面
 var viewPath = path.join(__dirname, 'views');
-var assetsPath = path.join(__dirname, 'public');
+var assetsPath = path.join(__dirname, 'public/js');
+
+//把public文件放到localhost:3000下面
+//var assetsPath = path.join(__dirname, 'public');
 
 //把views文件放到localhost:3000下面
 react(app, {
@@ -22,13 +27,13 @@ register({
 });
 
 
-//把public文件放到localhost:3000下面
 //先引入静态资源
 app.use(staticCache(assetsPath));
 app
     .use(router.routes())
     .use(router.allowedMethods());
-//渲染客户端页面,方式1：
+//渲染客户端页面
+//方式1：
 app.use(function* () {
     this.body = this.render('Index', {
         name: 'wangyiman'
